@@ -4,4 +4,4 @@ The [Fuse Todos Example](https://www.fusetools.com/examples/todo-app) revamped w
 
 A few notes:
 - I've taken the concepts of ["Containers" and "Components"](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) and applied them here.
-- There is an extension of the FuseJS/Observable class that experiments with a new, improved, version of the `refreshAll` API. 
+- There is an extension of the FuseJS/Observable class that experiments with a new, improved, version of the `refreshAll` API (see [this forum post](https://www.fusetools.com/community/forums/feature_requests/more_refreshall-like_primitive_operations_that_are))
