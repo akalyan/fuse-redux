@@ -1,0 +1,9 @@
+<ScrollView ux:Class="VisibleTodoList">
+  <JavaScript File="VisibleTodoList.js" />
+
+  <StackPanel>
+    <Each Items="{todos}">
+      <TodoItem />
+    </Each>
+  </StackPanel>
+</ScrollView>

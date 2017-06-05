@@ -1,0 +1,31 @@
+<StackPanel ux:Class="AddTodo">
+  <JavaScript File="AddTodo.js" />
+
+  <Grid Columns="auto,1*,auto">
+
+    <BlankButton Width="60" Height="60" Clicked="{toggleAll}">
+      <Panel Layer="Background">
+        <Panel Height="1" Width="16" Background="#ddd">
+          <Rotation Degrees="45"/>
+          <Translation X="-0.5" RelativeTo="Size"/>
+        </Panel>
+        <Panel Height="1" Width="16" Background="#ddd">
+          <Rotation Degrees="-45"/>
+          <Translation X="0.5" RelativeTo="Size"/>
+        </Panel>
+        <Translation Y="8"/>
+      </Panel>
+    </BlankButton>
+
+    <TextInput Value="{newTodoText}" PlaceholderText="Enter task here" PlaceholderColor="#ccc" TextColor="#888" FontSize="18" TextWrapping="NoWrap" Alignment="CenterLeft" MinWidth="100" Margin="10,10,15,10" />
+
+    <BlankButton Clicked="{addTodoClicked}" Width="60" Height="60" HitTestMode="LocalBoundsAndChildren">
+      <Panel Layer="Background">
+        <Panel Height="1" Width="30" Background="#ddd"/>
+        <Panel Width="1" Height="30" Background="#ddd"/>
+      </Panel>
+    </BlankButton>
+
+  </Grid>
+  <Rectangle Height="1" Color="#ddd"/>
+</StackPanel>

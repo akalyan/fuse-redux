@@ -1,0 +1,21 @@
+<App>
+  <JavaScript File="js/App.js" />
+
+  <Font ux:Global="RobotoRegular" File="Assets/Roboto-Regular.ttf" />
+
+  <DockPanel>
+    <StatusBarBackground Dock="Top" />
+    <BottomBarBackground Dock="Bottom" />
+
+    <DockPanel Margin="20" Background="White">
+      <Rectangle Layer="Background">
+        <Stroke Width="1" Brush="#ddd"/>
+      </Rectangle>
+
+      <AddTodo Dock="Top" />
+      <VisibleTodoList />
+      <Footer Dock="Bottom" />
+    </DockPanel>
+  </DockPanel>
+
+</App>

@@ -1,0 +1,71 @@
+<Panel ux:Class="TodoItem">
+  <Grid ux:Name="itemPanel" Columns="auto,1*,auto" Alignment="Top" Height="60" Opacity="1" BoxSizing="Limit" LimitHeight="100%">
+    <BlankButton Clicked="{toggleTodo}" Alignment="CenterLeft" Width="60" Height="60">
+      <Panel ux:Name="checkedIcon" Opacity="0">
+        <Rectangle ux:Class="CheckedIconPart">
+          <Stroke Color="#50ac9a" Width="1" />
+        </Rectangle>
+
+        <CheckedIconPart Height="1" Width="6">
+          <Rotation Degrees="45"/>
+          <Translation X="-0.5" RelativeTo="Size"/>
+        </CheckedIconPart>
+        <CheckedIconPart Height="1" Width="14">
+          <Rotation Degrees="-45"/>
+          <Translation X="0.5" RelativeTo="Size"/>
+        </CheckedIconPart>
+        <Translation Y="0.1" X="-0.05" RelativeTo="Size"/>
+      </Panel>
+
+      <Circle Layer="Background" HitTestMode="LocalVisualAndChildren" Width="32" Height="32" Color="#fff">
+        <Stroke Width="1">
+          <SolidColor ux:Name="checkedCircleColor" Color="#ddd"/>
+        </Stroke>
+      </Circle>
+    </BlankButton>
+
+    <Panel>
+      <Panel Alignment="Left">
+        <Rectangle ux:Name="textLine" Height="1" Opacity="0" Margin="30,0,0,0" Color="#bbb"/>
+        <Text ux:Name="itemText" Value="{text}" Alignment="CenterLeft" TextAlignment="Left" Margin="30,0,0,0" FontSize="20" Color="#999" TextWrapping="Wrap" />
+      </Panel>
+    </Panel>
+
+
+    <WhileTrue Value="{completed}">
+      <Change checkedCircleColor.Color="#50ac9a" Duration="0.3"/>
+      <Change checkedIcon.Opacity="1" Duration="0.3"/>
+      <Change textLine.Opacity="1" Duration="0.3"/>
+      <Change itemText.Color="#ddd" Duration="0.3"/>
+    </WhileTrue>
+
+    <BlankButton Alignment="CenterRight" Clicked="{deleteTodo}" Width="60" Height="60"
+        HitTestMode="LocalBoundsAndChildren">
+      <Panel Layer="Background" Height="16">
+        <Panel Width="20" Height="1" Background="#ddd">
+          <Rotation Degrees="45"/>
+        </Panel>
+        <Panel Width="20" Height="1" Background="#ddd">
+          <Rotation Degrees="-45"/>
+        </Panel>
+      </Panel>
+    </BlankButton>
+
+    <Rectangle Height="1" ColumnSpan="3" Row="0" Alignment="Bottom" Color="#ddd"/>
+  </Grid>
+
+  <WhileTrue Value="{hidden}">
+    <Change itemPanel.LimitHeight="0" Duration="0.4" Easing="CircularInOut"/>
+    <Change itemPanel.Opacity="0" Duration="0.25"  Easing="CircularInOut"/>
+  </WhileTrue>
+
+  <LayoutAnimation>
+    <Move RelativeTo="LayoutChange" Y="1" Duration="0.6" Easing="BounceIn"/>
+  </LayoutAnimation>
+  <AddingAnimation>
+    <Move RelativeTo="Size" X="1" Duration="0.3" Easing="CircularInOut" />
+  </AddingAnimation>
+  <RemovingAnimation>
+    <Move RelativeTo="Size" X="1" Duration="0.3" Easing="CircularInOut" />
+  </RemovingAnimation>
+</Panel>

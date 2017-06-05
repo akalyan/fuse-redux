@@ -1,0 +1,57 @@
+<StackPanel ux:Class="Footer">
+  <JavaScript File="Footer.js" />
+
+  <Rectangle Height="1" Color="#ddd"/>
+
+  <Panel Padding="0,8">
+    <MultiLayoutPanel ux:Name="multiLayout">
+      <GridLayout Columns="1*,1*,1.5*"/>
+      <BlankButton ux:Name="allButton" Clicked="{showAll}">
+        <Panel Alignment="Center">
+          <SmallText Value="All" TextAlignment="Center"/>
+          <Placeholder>
+            <Rectangle ux:Name="indicator" Column="0" Row="0" CornerRadius="3" Margin="-10,-5,-10,-5">
+              <LayoutAnimation>
+                <Move RelativeTo="LayoutChange" X="1" Duration="0.5" Easing="BackIn"/>
+                <Resize RelativeTo="LayoutChange" Duration="0.5" Easing="BackIn"/>
+              </LayoutAnimation>
+              <Stroke Width="1" Brush="#E7D9DE"/>
+            </Rectangle>
+          </Placeholder>
+        </Panel>
+
+        <Clicked>
+          <Set multiLayout.LayoutElement="allButton" />
+        </Clicked>
+      </BlankButton>
+      <BlankButton ux:Name="activeButton" Clicked="{showActive}">
+        <Panel Alignment="Center">
+          <SmallText TextAlignment="Center" Value="Active" />
+          <Placeholder Target="indicator"/>
+        </Panel>
+        <Clicked>
+          <Set multiLayout.LayoutElement="activeButton"/>
+        </Clicked>
+      </BlankButton>
+      <BlankButton ux:Name="completedButton" Clicked="{showCompleted}">
+        <Panel Alignment="Center">
+          <SmallText TextAlignment="Center" Value="Completed"/>
+          <Placeholder Target="indicator"/>
+        </Panel>
+        <Clicked>
+          <Set multiLayout.LayoutElement="completedButton"/>
+        </Clicked>
+      </BlankButton>
+    </MultiLayoutPanel>
+  </Panel>
+  <Panel>
+    <SmallText Value="{remainingText}" Margin="10" Alignment="Left"/>
+    <Panel ux:Name="clearCompletedButton" Alignment="TopRight" Clicked="{clearCompleted}"  Margin="10" IsEnabled="{canClearCompleted}">
+      <Text Value="Clear completed" FontSize="14" Color="#999" Margin="10,0,10,0" />
+      <WhileDisabled>
+        <Change clearCompletedButton.Opacity="0" Duration="0.3"/>
+      </WhileDisabled>
+    </Panel>
+    <Rectangle Height="1" Alignment="Top" Color="#ddd"/>
+  </Panel>
+</StackPanel>
